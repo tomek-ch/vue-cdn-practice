@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>To do list</h1>
+      <form @submit="addTask">
+        <input v-model="input" placeholder="New task" />
+        <button>Add</button>
+      </form>
+      <div v-for="(task, idx) in tasks">
+        <label>
+          <input
+            type="checkbox"
+            :checked="task.done"
+            @change="toggleDone(idx)"
+          />
+          {{ task.text }}
+        </label>
+        <button @click="remove(idx)">Delete</button>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
